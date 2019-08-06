@@ -1,5 +1,5 @@
 'use strict';
-
+require('babel-polyfill')
 var test = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
     var i;
