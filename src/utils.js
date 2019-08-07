@@ -23,3 +23,19 @@ export function isURL (url) {
   return false
 }
 export function noop() { }
+export function callbackify(fn) {
+  let argc = fn.length;
+  return (...args) => {
+    let callback = args[argc];
+    if (typeof callback !== 'function') callback = null;
+    return fn(...args)
+      .then(ret => {
+        callback && callback(null, ret);
+        return Promise.resolve(ret);
+      })
+      .catch(err => {
+        callback && callback(err);
+        return Promise.reject(err);
+      })
+  }
+}

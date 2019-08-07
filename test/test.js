@@ -25,4 +25,22 @@ describe('es2015_demo', () => {
       throw err;
     });
   });
+
+  it('复制本地文件成功 callback', done => {
+    let source = __filename;
+    let target = randomFilename();
+    let onProgress = false;
+    download(source, target, (size, total) => {
+      onProgress = true;
+      assert.equal(size, total);
+      assert.equal(total, getFileSize(source));
+    }, (err, filename) => {
+      assert.equal(err, null);
+      assert.equal(onProgress, true);
+      assert.equal(target, filename);
+      assert.equal(readFile(source), readFile(target));
+      done();
+    })
+  })
+  
 });

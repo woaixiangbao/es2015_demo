@@ -1,11 +1,10 @@
-import {randomFilename, isURL, noop} from './utils';
+import {randomFilename, isURL, noop, callbackify} from './utils';
 import path from 'path';
 import mkdirp from 'mkdirp';
 import copyFile from './copy';
 import downloadFile from './download';
-import { callbackify } from 'util';
 
-export default function download(source, target, progress) {
+export default callbackify(function download(source, target, progress) {
   target = target || randomFilename(download.tmpDir);
   progress = progress || noop;
   return new Promise ((resolve, reject) => {
@@ -14,4 +13,4 @@ export default function download(source, target, progress) {
       resolve((isURL(source) ? downloadFile : copyFile)(source, target, progress));
     });
   })
-}
+});
