@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run compile && mocha --require babel-core/register",
+    "compile": "babel src -d lib"
   },
   "keywords": [
     "demo"
@@ -12,8 +13,10 @@
   "author": "jianqing",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-preset-es2015": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "mocha": "^6.2.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

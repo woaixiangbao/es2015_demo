@@ -27,7 +27,3 @@ export default function downloadFile(url, target, progress) {
     .pipe(s);
   })
 }
-let url = 'https://piccdn.luojilab.com/fe-oss/default/MTU2NDY2MTI0MDQy.jpeg';
-downloadFile(url, '/Users/jianqing/Downloads/abc.jpg', (size, total) => console.log(`进度${size}/${total}`))
-.then(filename => console.log(`已保存到${filename}`))
-.catch(err => console.log(`出错： ${err}`));

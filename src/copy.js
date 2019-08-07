@@ -18,6 +18,3 @@ export default function copyFile(source, target, progress) {
     });
   });
 }
-copyFile(__filename, '/Users/jianqing/Downloads/copy.js', (size, total) => console.log(`进度${size}/${total}`))
-.then(filename => console.log(`已保存到${filename}`))
-.catch(err => console.log(`出错了：${err}`));
