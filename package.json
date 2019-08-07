@@ -1,11 +1,12 @@
 {
-  "name": "es2015_demo",
-  "version": "1.0.0",
+  "name": "es2015_demo_jianqing",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "npm run compile && mocha --require babel-core/register",
-    "compile": "babel src -d lib"
+    "compile": "babel src -d lib",
+    "prepublish": "npm run compile"
   },
   "keywords": [
     "demo"
